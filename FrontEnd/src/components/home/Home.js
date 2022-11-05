@@ -8,8 +8,8 @@ import {
   GlobalStyles,
 } from '../../appStyles';
 
-export class Home extends Component {
-  render() {
+export default function Home(){
+ 
     return (
       <> <AppContainer className="back">
       <GlobalStyles />
@@ -19,4 +19,4 @@ export class Home extends Component {
   </>
          );
   }
-}
+
