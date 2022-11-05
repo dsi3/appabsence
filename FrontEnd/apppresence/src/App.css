@@ -1,0 +1,34 @@
+.back{
+    background-image: url('./iset.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.App {
+  background-image: url('./iset.jpg');
+    background-color: white;
+  }
+  
+  
+  .form {
+    background-image: url('./iset.jpg');
+    background-color: white;
+    width: 500px;
+    height: 1000px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    
+  }
+  
+  
+  
+  label {
+    font-size: 14px;
+    font-weight: 60px;
+    color: rgb(82, 8, 253);
+  }
+  
+  
