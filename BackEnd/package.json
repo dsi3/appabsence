@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.3",
+    "express": "^4.18.2",
     "jsrsasign": "^10.5.23",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.20",
     "path": "^0.12.7",
     "sass-mq": "^5.0.1"
   }
