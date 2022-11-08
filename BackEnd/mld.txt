@@ -1,0 +1,12 @@
+employer = (Id_employer COUNTER, Role VARCHAR(50), emp_nom VARCHAR(50), emp_prenom VARCHAR(50), emp_cin VARCHAR(50));
+Registre = (Id_Registre COUNTER, etat_person VARCHAR(50));
+etudiant = (Id_etudiant COUNTER, nom_etu VARCHAR(50), prenom_etu VARCHAR(50), cin_etu VARCHAR(50));
+date_table = (Id_date COUNTER, date_time DATETIME);
+matier = (Id_matier COUNTER, mat_name VARCHAR(50));
+group_table = (Id_group COUNTER, group_name VARCHAR(50), #Id_etudiant);
+filieres = (Id_filieres COUNTER, fil_name VARCHAR(50), #Id_matier);
+departements = (Id_departements COUNTER, dep_name VARCHAR(50), #Id_filieres);
+enregistrer = (#Id_employer, #Id_Registre);
+concerne = (#Id_Registre, #Id_etudiant);
+correspond = (#Id_Registre, #Id_date);
+Asso_12 = (#Id_Registre, #Id_matier);
