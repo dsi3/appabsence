@@ -1,5 +1,5 @@
 CREATE TABLE employer(
-   Id_employer COUNTER,
+   Id_employer int AUTO_INCREMENT,
    Role VARCHAR(50),
    emp_nom VARCHAR(50),
    emp_prenom VARCHAR(50),
@@ -8,13 +8,13 @@ CREATE TABLE employer(
 );
 
 CREATE TABLE Registre(
-   Id_Registre COUNTER,
+   Id_Registre int AUTO_INCREMENT,
    etat_person VARCHAR(50),
    PRIMARY KEY(Id_Registre)
 );
 
 CREATE TABLE etudiant(
-   Id_etudiant COUNTER,
+   Id_etudiant int AUTO_INCREMENT,
    nom_etu VARCHAR(50),
    prenom_etu VARCHAR(50),
    cin_etu VARCHAR(50),
@@ -22,19 +22,19 @@ CREATE TABLE etudiant(
 );
 
 CREATE TABLE date_table(
-   Id_date COUNTER,
+   Id_date int AUTO_INCREMENT,
    date_time DATETIME,
    PRIMARY KEY(Id_date)
 );
-
+------------
 CREATE TABLE matier(
-   Id_matier COUNTER,
+   Id_matier int AUTO_INCREMENT,
    mat_name VARCHAR(50),
    PRIMARY KEY(Id_matier)
 );
 
 CREATE TABLE group_table(
-   Id_group COUNTER,
+   Id_group int AUTO_INCREMENT,
    group_name VARCHAR(50),
    Id_etudiant INT NOT NULL,
    PRIMARY KEY(Id_group),
@@ -42,7 +42,7 @@ CREATE TABLE group_table(
 );
 
 CREATE TABLE filieres(
-   Id_filieres COUNTER,
+   Id_filieres int AUTO_INCREMENT,
    fil_name VARCHAR(50),
    Id_matier INT NOT NULL,
    PRIMARY KEY(Id_filieres),
@@ -50,7 +50,7 @@ CREATE TABLE filieres(
 );
 
 CREATE TABLE departements(
-   Id_departements COUNTER,
+   Id_departements int AUTO_INCREMENT,
    dep_name VARCHAR(50),
    Id_filieres INT NOT NULL,
    PRIMARY KEY(Id_departements),
