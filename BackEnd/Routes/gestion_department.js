@@ -23,4 +23,20 @@ router.get("/ajout",async(req,res)=>{
         }
     });
 });
+router.get("/modi/:depId",async(req,res)=>{
+    const depId = req.params.depId
+    const dep = req.body.dep
+    const specialite = req.body.specialite
+    db.query(
+        "update department set dep=?,specialite=? where id_dep=?",[dep,specialite,depId],
+        (err,result)=>{
+            if(result){
+                res.json("update succefull")
+            }else{
+                res.json("update denied")
+            }
+        }
+    )
+    
+})
 module.exports = router;
