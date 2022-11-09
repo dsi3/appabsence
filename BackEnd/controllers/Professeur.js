@@ -1,6 +1,6 @@
 import { connection } from "../database/connection";
 
-//ajout
+
 export const ajouter = (req , res)=>{
   const sql = "SELECT * FROM employer WHERE Role =`prof` and id= ?   ";
 
@@ -19,7 +19,7 @@ export const ajouter = (req , res)=>{
   
 }
 
-//modifier
+
 export const modifier = (req , res)=>{
 var Id_employer = req.params.id;
 
