@@ -19,9 +19,25 @@ router.get("/ajout",async(req,res)=>{
          else {
             res.json("ajout dinied")
 
-            // hgfghj
+          
         }
     });
+    router.get("/modi/:filId",async(req,res)=>{
+        const filId = req.params.filId
+     
+        const nomFiliere = req.body.nomFiliere
+        db.query(
+            "update filiere set nom_filiere=? where id_filiere=?",[nomFiliere,filId],
+            (err,result)=>{
+                if(result){
+                    res.json("update succefull")
+                }else{
+                    res.json("update denied")
+                }
+            }
+        )
+        
+    })
 });
 
 module.exports = router;
