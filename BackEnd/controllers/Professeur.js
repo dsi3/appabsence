@@ -1,15 +1,14 @@
-import { connection } from "../database/connection";
+const connection = require('../database/connection');
 
+ const ajouter = (req , res)=>{
+  const sql = "SELECT * FROM employer WHERE id= ?   ";
 
-export const ajouter = (req , res)=>{
-  const sql = "SELECT * FROM employer WHERE Role =`prof` and id= ?   ";
-
-  connection.query(sql, [req.body.id, req.body.name,req.body.prenom,req.body.cin], (err, data) => {
+  connection.query(sql, [req.body.id, req.body.name,req.body.prenom,req.body.cin,req.body.Role], (err, data) => {
     if (err) return res.status(500).json(err);
     if (data.length) return res.status(409).json("professure already exists!");
 
-    const sql = "INSERT INTO employer(`id`,`name`,`prenom`,`cin`)where Role =`prof` VALUES (?)";
-    const values = [req.body.id, req.body.name];
+    const sql = "INSERT INTO employer(`id`,`name`,`prenom`,`cin`, `Role` =`prof`) VALUES (?)";
+    const values = [req.body.id, req.body.name,req.body.prenom,req.body.cin,req.body.Role];
 
     connection.query(sql, [values], (err, data) => {
       if (err) return res.status(500).json(err);
@@ -17,13 +16,14 @@ export const ajouter = (req , res)=>{
     });
   });
   
-}
+} 
+module.exports = ajouter;
 
 
-export const modifier = (req , res)=>{
+const modifier = (req , res)=>{
 var Id_employer = req.params.id;
 
-const sql = "UPDATE employer SET `name`= ? WHERE Role =`prof` id = ?";
+const sql = "UPDATE employer SET `emp_nom`= ? and `emp_prenom`= ? and  `emp_cin`= ? where id = ?";
 
 const values = [
   req.body.name,
@@ -38,3 +38,4 @@ connection.query(sql, [...values,Id_employer], (err, data) => {
 
 
 }
+module.exports = modifier;
