@@ -4,7 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "nodemon index.js"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+>>>>>>> dd776c06ef6507f8ac435705232d6f21200c5f89
   },
   "author": "",
   "license": "ISC",
