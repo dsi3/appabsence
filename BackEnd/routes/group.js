@@ -1,9 +1,48 @@
-import express from "express";
+const express = require("express");
+const router = express.Router()
+const mysql = require('mysql')
 
-import { ajouter , modifier } from "../controllers/group.js";
+const db =mysql.createConnection({
+    user:"root",
+    host:"localhost",
+    password:"",
+    database:"jiraproject",
+});
+db.connect(function(err) {
+  console.log("Connected!");
+});
 
-const router = express.Router();
 
-router.post("/ajouter", ajouter);
-router.put("/modifier/:id",modifier);
-export default router;
+router.get("/ajout",async(req,res)=>{
+    const id_grp = req.body.id
+    const name = req.body.name
+    db.query("insert into group_user (id,name) Values(?,?)",
+    [id_grp,name],
+    (err,result)=>{
+        if(result){
+        res.json("added succefull")}
+         else {
+            res.json("ajout dinied")
+
+        }
+    });
+    });
+
+
+router.get("/modi/:id",async(req,res)=>{
+    const id_grp = req.params.id
+    const name = req.body.name
+   
+    db.query(
+        "update group_user set name=? where id=?",[name,id_grp],
+        (err,result)=>{
+            if(result){
+                res.json("update succefull")
+            }else{
+                res.json("update denied")
+            }
+        }
+    )
+    
+})
+module.exports = router;
