@@ -1,11 +1,9 @@
 const express = require("express");
-
 const router = express.Router()
-
-router.get("/ajoutdep",async(req,res)=>{
-    const dep = req.body.dep
-    const specialite = req.body.specialite
-    db.query("insert into department(dep,specialite) Values(?,?)",[dep,specialite],
+router.get("/ajoutermat",async(req,res)=>{
+    const Id_matier = req.body.Id_matier
+    const mat_name = req.body.mat_name
+    db.query("insert into matier(Id_matier,mat_name) Values(?,?)",[Id_matier,mat_name],
     (err,result)=>{
         if(result){
         res.json("added succefull")}
@@ -15,12 +13,11 @@ router.get("/ajoutdep",async(req,res)=>{
         }
     });
 });
-router.get("/modi/:depid",async(req,res)=>{
-    const depId = req.params.depId
-    const dep = req.body.dep
-    const specialite = req.body.specialite
+router.get("/modi/:matid",async(req,res)=>{
+    const Id_matier = req.params.Id_matier
+    const mat_name = req.body.mat_name
     db.query(
-        "update department set dep=?,specialite=? where id_dep=?",[dep,specialite,depId],
+        "update matier set mat_name=? where id_dep=?",[mat_name,Id_matier],
         (err,result)=>{
             if(result){
                 res.json("update succefull")

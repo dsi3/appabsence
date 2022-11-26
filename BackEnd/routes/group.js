@@ -1,19 +1,8 @@
 const express = require("express");
 const router = express.Router()
-const mysql = require('mysql')
-
-const db =mysql.createConnection({
-    user:"root",
-    host:"localhost",
-    password:"",
-    database:"jiraproject",
-});
-db.connect(function(err) {
-  console.log("Connected!");
-});
 
 
-router.get("/ajout",async(req,res)=>{
+router.get("/ajoutgroup",async(req,res)=>{
     const id_grp = req.body.id
     const name = req.body.name
     db.query("insert into group_user (id,name) Values(?,?)",
@@ -29,7 +18,7 @@ router.get("/ajout",async(req,res)=>{
     });
 
 
-router.get("/modi/:id",async(req,res)=>{
+router.get("/modi/:groupid",async(req,res)=>{
     const id_grp = req.params.id
     const name = req.body.name
    

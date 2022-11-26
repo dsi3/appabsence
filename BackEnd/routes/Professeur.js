@@ -1,16 +1,7 @@
 const express = require("express");
 const router = express.Router()
-const mysql = require('mysql')
-const db =mysql.createConnection({
-    user:"root",
-    host:"localhost",
-    password:"",
-    database:"appabsence",
-});
-db.connect(function(err) {
-  console.log("Connected!");
-});
-router.get("/ajout",async(req,res)=>{
+
+router.get("/ajoutprof",async(req,res)=>{
     const Id_employer = req.body.Id_employer
     const Role= "prof"
     const emp_nom = req.body.emp_nom
@@ -27,14 +18,14 @@ router.get("/ajout",async(req,res)=>{
         }
     });
 });
-router.get("/modifer/:profid",async(req,res)=>{
+router.get("/modi/:profid",async(req,res)=>{
     const Id_employer = req.body.Id_employer
     const Role= "prof"
     const emp_nom = req.body.emp_nom
     const emp_prenom= req.body.emp_prenom
     const emp_cin= req.body.emp_cin
 db.query(
-        "update 	employer set emp_prenom=?,emp_nom=?,emp_cin=? where Id_employer=?",[emp_prenom,emp_nom,emp_cin,Id_employer],
+        "update employer set emp_prenom=?,emp_nom=?,emp_cin=? where Id_employer=?",[emp_prenom,emp_nom,emp_cin,Id_employer],
         (err,result)=>{
             if(result){
                 res.json("update succefull")
