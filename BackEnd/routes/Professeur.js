@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router()
 
 router.get("/ajoutprof",async(req,res)=>{
-    const Id_employer = req.body.Id_employer
     const Role= "prof"
     const emp_nom = req.body.emp_nom
     const emp_prenom= req.body.emp_prenom
     const emp_cin= req.body.emp_cin
 
-    db.query("insert into employer(Id_employer,Role,emp_nom,emp_prenom,emp_cin) Values(?,?,?,?,?)",[Id_employer,Role,emp_nom,emp_prenom,emp_cin],
+    db.query("insert into employer(Role,emp_nom,emp_prenom,emp_cin) Values(?,?,?,?,?)",[Role,emp_nom,emp_prenom,emp_cin],
     (err,result)=>{
         if(result){
         res.json("added succefull")}
@@ -19,7 +18,6 @@ router.get("/ajoutprof",async(req,res)=>{
     });
 });
 router.get("/modi/:profid",async(req,res)=>{
-    const Id_employer = req.body.Id_employer
     const Role= "prof"
     const emp_nom = req.body.emp_nom
     const emp_prenom= req.body.emp_prenom
