@@ -3,9 +3,9 @@ const router = express.Router()
 
 
 router.get("/ajoutgroup",async(req,res)=>{
-    const id_grp = req.body.id
+  /*   const id_grp = req.body.id */
     const name = req.body.name
-    db.query("insert into group_user (id,name) Values(?,?)",
+    db.query("insert into group_table (group_name,name) Values(?,?)",
     [id_grp,name],
     (err,result)=>{
         if(result){
@@ -23,7 +23,7 @@ router.get("/modi/:groupid",async(req,res)=>{
     const name = req.body.name
    
     db.query(
-        "update group_user set name=? where id=?",[name,id_grp],
+        "update group_table set name=? where id=?",[name,id_grp],
         (err,result)=>{
             if(result){
                 res.json("update succefull")
