@@ -2,19 +2,20 @@ const express = require("express");
 
 const router = express.Router()
 
+const db=require ('../database/connection')
+
 
  //add users to data base
-router.post("/ajoutetu",async(req,res)=>{
-    
-  const {nom,prenom,cin} = req.body // fetch data from the request
-  const Qry = "INSERT INTO `etudiant` (`nom_etu`, `prenom_etu`, `cin_etu`) VALUES (?, ?, ?);"   
-  
-    db.query(Qry,[nom,prenom,cin],
+router.get("/ajoutetu",async(req,res)=>{
+    const nom = req.body.nom
+    const prenom = req.body.prenom
+    const cin = req.body.cin
+db.query("INSERT INTO etudiant (nom_etu, prenom_etu, cin_etu) VALUES (?, ?, ?)",[nom,prenom,cin],   
     (err,result)=>{
         if(result){
         res.json("added succefull")}
          else {
-            res.json("ajout dinied")
+            res.json(err)
 
         }
     });
@@ -37,9 +38,10 @@ router.get("/gerusers",async(req,res)=>{
 
 //update user by id
 router.put("/updateuser",async(req,res)=>{
-    const {id,nom,prenom,cin} = req.body // fetch data from the request
-    const Qry = "update etudiant set nom_etu=?, prenom_etu=?, cin_etu=?  where id_etudiant=?"
-    db.query(Qry,[nom,prenom,cin,id],
+    const nom = req.body.nom
+    const prenom = req.body.prenom
+    const cin = req.body.cin // fetch data from the request
+    db.query( "update etudiant set nom_etu=?, prenom_etu=?, cin_etu=?  where id_etudiant=?",[nom,prenom,cin],
         (err,result)=>{
             if(result){
                 res.json("update succefull")

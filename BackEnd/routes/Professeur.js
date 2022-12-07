@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router()
+const db=require ('../database/connection')
+
 
 router.get("/ajoutprof",async(req,res)=>{
     const Role= "prof"
@@ -7,12 +9,12 @@ router.get("/ajoutprof",async(req,res)=>{
     const emp_prenom= req.body.emp_prenom
     const emp_cin= req.body.emp_cin
 
-    db.query("insert into employer(Role,emp_nom,emp_prenom,emp_cin) Values(?,?,?,?,?)",[Role,emp_nom,emp_prenom,emp_cin],
+    db.query("insert into employer(Role,emp_nom,emp_prenom,emp_cin) Values(?,?,?,?)",[Role,emp_nom,emp_prenom,emp_cin],
     (err,result)=>{
         if(result){
         res.json("added succefull")}
          else {
-            res.json("ajout dinied")
+            res.json(err)
 
         }
     });

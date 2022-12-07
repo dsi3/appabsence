@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router()
+const db=require ('../database/connection')
+
 router.get("/ajoutermat",async(req,res)=>{
     const Id_matier = req.body.Id_matier
     const mat_name = req.body.mat_name
