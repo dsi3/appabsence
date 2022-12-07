@@ -5,13 +5,15 @@ const db=require ('../database/connection')
 
 
 router.get("/ajoutfil",async(req,res)=>{
+    const Id_fel= req.body.Id_fel
+    const Id_departements = req.body.Id_departements	
     const nomFiliere = req.body.nomFiliere
-    db.query("insert into filieres(fil_name) Values(?)",[nomFiliere],
+    db.query("insert into filieres(Id_departements,fil_name,Id_filieres) Values(?,?,?)",[Id_departements,nomFiliere,Id_fel],
     (err,result)=>{
         if(result){
         res.json("added succefull")}
          else {
-            res.json("ajout dinied")
+            res.json(err)
           
         }
     });
@@ -25,7 +27,7 @@ router.get("/ajoutfil",async(req,res)=>{
                 if(result){
                     res.json("update succefull")
                 }else{
-                    res.json("update denied")
+                    res.json(err)
                 }
             }
         )

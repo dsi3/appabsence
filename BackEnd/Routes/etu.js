@@ -7,10 +7,12 @@ const db=require ('../database/connection')
 
  //add users to data base
 router.get("/ajoutetu",async(req,res)=>{
+    const idgr = req.body.idgr
+    const id_etu= req.body.id_etu
     const nom = req.body.nom
     const prenom = req.body.prenom
     const cin = req.body.cin
-db.query("INSERT INTO etudiant (nom_etu, prenom_etu, cin_etu) VALUES (?, ?, ?)",[nom,prenom,cin],   
+db.query("INSERT INTO etudiant (Id_etudiant,nom_etu, prenom_etu, cin_etu,Id_group=?) VALUES (?,?, ?, ?,?)",[id_etu,nom,prenom,cin,idgr],   
     (err,result)=>{
         if(result){
         res.json("added succefull")}
@@ -30,7 +32,7 @@ router.get("/gerusers",async(req,res)=>{
         res.json(result)
         }
         else {
-          res.json("selection dinied")
+          res.json(err)
         }
     });
 });

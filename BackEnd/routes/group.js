@@ -4,10 +4,11 @@ const db=require ('../database/connection')
 
 
 router.get("/ajoutgroup",async(req,res)=>{
-  /*   const id_grp = req.body.id */
+    const id_grp = req.body.id 
     const gname = req.body.gname
-    db.query("insert into group_table (group_name) Values(?)",
-    [gname],
+    const Id_filieres=req.body.idf
+    db.query("insert into group_table (	Id_group,group_name,Id_filieres) Values(?,?,?)",
+    [id_grp,gname,Id_filieres],
     (err,result)=>{
         if(result){
         res.json("added succefull")}

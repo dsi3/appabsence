@@ -5,13 +5,14 @@ const db=require ('../database/connection')
 
 
 router.get("/ajoutdep",async(req,res)=>{
+    const Id_departements	=req.body.dep
     const dep = req.body.dep
-    db.query("insert into departements (dep_name) Values(?)",[dep],
+    db.query("insert into departements (Id_departements,dep_name) Values(?,?)",[dep],
     (err,result)=>{
         if(result){
         res.json("added succefull")}
          else {
-            res.json("ajout dinied")
+            res.json(err)
 
         }
     });
@@ -25,7 +26,7 @@ router.get("/modi/:depid",async(req,res)=>{
             if(result){
                 res.json("update succefull")
             }else{
-                res.json("update denied")
+                res.json(err)
             }
         }
     )
