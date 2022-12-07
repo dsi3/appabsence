@@ -19,7 +19,7 @@ router.get("/ajoutprof",async(req,res)=>{
         }
     });
 });
-router.get("/gerusers",async(req,res)=>{
+router.get("/gerusersprof ",async(req,res)=>{
     
     const Qry = 'select * from 	employer' ;  
     db.query(Qry,(err,result)=>{
