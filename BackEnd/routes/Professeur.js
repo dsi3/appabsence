@@ -19,6 +19,19 @@ router.get("/ajoutprof",async(req,res)=>{
         }
     });
 });
+router.get("/gerusers",async(req,res)=>{
+    
+    const Qry = 'select * from 	employer' ;  
+    db.query(Qry,(err,result)=>{
+        if(result){
+        res.json(result)
+        }
+        else {
+          res.json(err)
+        }
+    });
+});
+
 router.get("/modi/:profid",async(req,res)=>{
     const Role= "prof"
     const emp_nom = req.body.emp_nom
@@ -30,7 +43,7 @@ db.query(
             if(result){
                 res.json("update succefull")
             }else{
-                res.json("update denied")
+                res.json(err)
             }
         }
     )
