@@ -1,0 +1,6 @@
+.back{
+    background-image: url('./iset.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
